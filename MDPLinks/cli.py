@@ -1,16 +1,20 @@
 """This module provides the MDPLinks CLI."""
 # mdplinks/cli.py
 
-from typing import Optional
+from typing import Optional, List
 import os
+from click.termui import prompt
 import typer
+from pathlib import Path
 
-from mdplinks import __app_name__, __version__
+from mdplinks import __app_name__, __version__, database, mdplinks, ERRORS
 app = typer.Typer()
+DB_PATH = "mdplinks/db/"
 
 def _version_callback(value: bool) -> None:
     if value:
         typer.echo(f"{__app_name__} v{__version__}")
+        typer.echo(DB_PATH)
         raise typer.Exit()
 
 @app.callback()
@@ -32,19 +36,45 @@ def init(
         "mdplinks/db/",
         "--db-path",
         "-db",
-        prompt="Database location?"
+        prompt="Ingrese la ruta para la base de datos: "
     ),
 ) -> None:
     if os.path.isdir(db_path):
         if not os.listdir(db_path):            
-            typer.secho(f"Database path set to {db_path}. Created the database.", fg=typer.colors.YELLOW)
-            #crear db!!        
+            typer.secho(f"Ruta de base de datos configurada como {db_path}. Se creó la base de datos.", fg=typer.colors.YELLOW)
+            DB_PATH = db_path
+            print("DB_PATH: ",DB_PATH)
             with open(db_path+"database.json", "w") as f:
                 f.write("[]")
         else:
-            typer.secho(f"Error: The database already exists!", fg=typer.colors.RED)
+            typer.secho(f"Error: ¡La base de datos ya existe!", fg=typer.colors.RED)
     else:
-        typer.secho(f"Error: The given directory does not exist!", fg=typer.colors.RED)
+        typer.secho(f"Error: ¡El directorio ingresado no existe!", fg=typer.colors.RED)
+    return db_path
 
-'''@app.command()
-def create_link(url: str, title: str = ""):'''
+def get_controller() -> mdplinks.LinkController:
+    if DB_PATH != "":
+        return mdplinks.LinkController(DB_PATH)
+    else:
+        typer.secho('Error: Base de datos no encontrada', fg=typer.colors.RED)
+        raise typer.Exit(1)
+
+@app.command()
+def add_link(
+    title: str = typer.Option(""),
+    url: str = typer.Argument(..., help="El enlace de la página web que se desea agregar"),
+    tags: str = typer.Option(..., help="Las etiquetas separadas por comas"),
+) -> None:
+    '''Agregar un nuevo enlace con url, título (opcional) y etiquetas'''
+    controller = get_controller()
+    link, error = controller.add_link(url, tags, title)
+    if error:
+        typer.secho(f'Error al agregar enlace con: "{ERRORS[error]}"', fg=typer.colors.RED)
+        raise typer.Exit(1)
+    else:
+        typer.secho(f"""Se agregó el enlace: "{link['Url']}" """
+                    f"""con las etiquetas {tags}""",
+                    fg=typer.colors.YELLOW) if link['Title'] == "" else typer.secho(f"""Se agregó el enlace: "{link['Url']}" """
+                    f"con el título: {link['Title']}"
+                    f""" y las etiquetas: {tags}""",
+                    fg=typer.colors.YELLOW)
