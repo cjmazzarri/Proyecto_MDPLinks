@@ -12,12 +12,14 @@ __version__ = "0.1.0"
     DB_WRITE_ERROR,
     JSON_ERROR,
     ID_ERROR,
-) = range(7)
+    TAG_ERROR
+) = range(8)
 
 ERRORS = {
     DIR_ERROR: "config directory error",
     FILE_ERROR: "config file error",
-    DB_READ_ERROR: "database read error",
-    DB_WRITE_ERROR: "database write error",
-    ID_ERROR: "link id error",
+    DB_READ_ERROR: "Error al leer la BD",
+    DB_WRITE_ERROR: "Error al escribir en la BD",
+    ID_ERROR: "Link no encontrado con el URL especificado",
+    TAG_ERROR: "Etiquetas contienen uno o más signos de puntuación o espacios"
 }
