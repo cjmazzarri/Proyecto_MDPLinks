@@ -36,7 +36,7 @@ def main(
         None,
         "--version", #nombres de linea de comando para version
         "-v",
-        help="Show the application's version and exit.", #msg de ayuda
+        help="Mostrar la versión de la aplicación.", #msg de ayuda
         callback=_version_callback, #ejecutar esta funcion tras correr la opción
         is_eager=True, #eager indica que esta opción tiene precedencia sobre otros comandos
     )
@@ -103,7 +103,7 @@ def get_all_links() -> None:
         raise typer.Exit()
     typer.secho("\nMostrando los enlaces registrados en total ("+str(len(link_list))+"):\n", fg=typer.colors.BRIGHT_GREEN)
 
-    for link in link_list:              #se podría mover esto a una función mostrar para mejor orden
+    for link in link_list:              #se podría mover esto a una función mostrar() para mejor orden
         taglist = ",".join(link['Tags'])
         rawdate = link['CreatedAt']
         datestr = datetime.fromisoformat(rawdate)
@@ -135,21 +135,30 @@ def edit_link(
 @app.command(name="tag-search")
 def tag_search(
     tag: str = typer.Option("",help="La etiqueta que será usada para consultar links."),
+    tags: str = typer.Option("", help="Las etiquetas que se usarán para consultar links, si desea buscar con más de una a la vez."),
     per_page: int = typer.Option(25, help="Cantidad de enlaces a mostrar por página.")
 
 ) -> None:
-    '''Buscar links por etiqueta'''
+    '''Buscar links por 1 o varias etiquetas. Si no se incluye --tag ni --tags, se mostrará la totalidad de los registros.'''
     controller = get_controller()
     if per_page < 1:
         typer.secho('Error: ¡El modificador --per-page deber ser mayor o igual que 1!', fg=typer.colors.RED)
         raise typer.Exit(1)
-    if tag=="":
+    if tag=="" and tags=="":
         get_all_links()
         raise typer.Exit()
-    link_list = controller.search_by_tag(tag)
+    if tag!="":
+        link_list = controller.search_by_tag(tag)
+        typer.secho(f"Se encontraron {len(link_list)} enlaces encontrados con la etiqueta {tag}.",fg=typer.colors.GREEN)
+    else: 
+        link_list = controller.search_multitag(tags)
+        typer.secho(f"Se encontraron {len(link_list)} enlaces encontrados con las etiquetas {tag}.",fg=typer.colors.GREEN)
     pages = math.ceil(len(link_list)/per_page)
-    page_count = 1
-    typer.secho(f"Se encontraron {len(link_list)} enlaces encontrados con la etiqueta {tag}.",fg=typer.colors.GREEN)
+    if len(link_list) > 0:
+        page_count = 1 
+    else: 
+        page_count = 0
+    
     typer.secho(f"Mostrando {per_page} enlaces por página.", fg=typer.colors.BLUE)
     typer.secho(f"Página {page_count} de {pages}" ,fg=typer.colors.BRIGHT_YELLOW)
     link_count = 0
@@ -174,4 +183,6 @@ def tag_search(
         typer.secho(f"  Fecha y hora de creación: {datefmt}\n", fg=typer.colors.YELLOW)
         link_count+=1
     typer.secho('Fin de los resultados', fg=typer.colors.YELLOW)
+
+
     

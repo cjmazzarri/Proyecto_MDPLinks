@@ -21,5 +21,5 @@ ERRORS = {
     DB_READ_ERROR: "Error al leer la BD",
     DB_WRITE_ERROR: "Error al escribir en la BD",
     ID_ERROR: "Link no encontrado con el URL especificado",
-    TAG_ERROR: "Etiquetas contienen uno o más signos de puntuación o espacios"
+    TAG_ERROR: "Etiquetas contienen uno o más signos de puntuación o espacios"    
 }

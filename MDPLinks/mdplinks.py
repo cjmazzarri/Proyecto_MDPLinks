@@ -1,7 +1,8 @@
 '''Clase modelo para los enlaces'''
 from typing import Any, Dict, NamedTuple, List
-from mdplinks import DB_READ_ERROR, TAG_ERROR, ID_ERROR
+from mdplinks import DB_READ_ERROR, TAG_ERROR, ID_ERROR, MULTITAG_ERROR
 from datetime import datetime, timezone
+import collections
 
 from mdplinks.database import DatabaseHandler
 
@@ -72,3 +73,15 @@ class LinkController:
             if given_tag in link['Tags']:
                 results.append(link)
         return results
+
+    def search_multitag(self, given_tags: str) -> List[Dict[str, Any]]:
+        read = self._db_handler.read_links()
+        results = []
+        given_tags_list = given_tags.split(',')
+        given_tags_counter = collections.Counter(given_tags_list)
+        for link in read.links:
+            link_tags_counter = collections.Counter(link['Tags'])
+            if given_tags_counter == link_tags_counter:
+                results.append(link)        
+        return results
+
