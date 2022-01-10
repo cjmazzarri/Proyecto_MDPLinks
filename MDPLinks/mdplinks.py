@@ -1,6 +1,6 @@
 '''Clase modelo para los enlaces'''
 from typing import Any, Dict, NamedTuple, List
-from mdplinks import DB_READ_ERROR, TAG_ERROR, ID_ERROR, MULTITAG_ERROR
+from mdplinks import DB_READ_ERROR, TAG_ERROR, ID_ERROR
 from datetime import datetime, timezone
 import collections
 

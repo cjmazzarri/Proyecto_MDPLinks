@@ -3,15 +3,13 @@
 
 from typing import Optional, List
 import os
-from click.termui import prompt
 import typer
-from pathlib import Path
-from datetime import date, timezone, datetime
+from datetime import datetime
 from babel.dates import format_datetime, get_timezone
 import math
 import msvcrt as m
 
-from mdplinks import database, ERRORS, mdplinks
+from mdplinks import ERRORS, mdplinks
 from mdplinks import __app_name__, __version__
 app = typer.Typer()
 DB_PATH = "mdplinks/db/"
