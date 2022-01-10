@@ -1,0 +1,385 @@
+[
+    {
+        "Url": "www.google.com",
+        "Title": "",
+        "Tags": [
+            "b\u00fasqueda"
+        ],
+        "CreatedAt": "2022-01-09T03:50:58.784+00:00"
+    },
+    {
+        "Url": "www.mdp.com.pe",
+        "Title": "Sitio web de MDP",
+        "Tags": [
+            "empresas",
+            "desarrollo",
+            "software"
+        ],
+        "CreatedAt": "2022-01-09T03:53:24.180+00:00"
+    },
+    {
+        "Url": "es.wikipedia.org",
+        "Title": "La enciclopedia libre",
+        "Tags": [
+            "informaci\u00f3n",
+            "acad\u00e9mico",
+            "investigaci\u00f3n",
+            "educaci\u00f3n"
+        ],
+        "CreatedAt": "2022-01-09T04:28:10.939+00:00"
+    },
+    {
+        "Url": "www.yahoo.com",
+        "Title": "Buscar con Yahoo",
+        "Tags": [
+            "b\u00fasqueda"
+        ],
+        "CreatedAt": "2022-01-09T20:11:11.585+00:00"
+    },
+    {
+        "Url": "www.bing.com",
+        "Title": "B\u00fasqueda de Bing",
+        "Tags": [
+            "b\u00fasqueda"
+        ],
+        "CreatedAt": "2022-01-09T20:11:26.096+00:00"
+    },
+    {
+        "Url": "www.github.com",
+        "Title": "GitHub",
+        "Tags": [
+            "software",
+            "desarrollo",
+            "tecnolog\u00eda"
+        ],
+        "CreatedAt": "2022-01-09T20:13:09.131+00:00"
+    },
+    {
+        "Url": "www.gitmoji.dev",
+        "Title": "gitmoji | An emoji guide for your commit messages",
+        "Tags": [
+            "desarrollo"
+        ],
+        "CreatedAt": "2022-01-09T20:14:38.721+00:00"
+    },
+    {
+        "Url": "www.stackoverflow.com",
+        "Title": "Stackoverflow: where developers learn, share & Build Careers",
+        "Tags": [
+            "desarrollo"
+        ],
+        "CreatedAt": "2022-01-09T20:16:51.280+00:00"
+    },
+    {
+        "Url": "www.reddit.com",
+        "Title": "Reddit: Explora lo que quieras",
+        "Tags": [
+            "redes_sociales"
+        ],
+        "CreatedAt": "2022-01-09T20:17:42.667+00:00"
+    },
+    {
+        "Url": "www.fb.com",
+        "Title": "Facebook - Inicia sesi\u00f3n o reg\u00edstrate",
+        "Tags": [
+            "redes_sociales"
+        ],
+        "CreatedAt": "2022-01-09T20:21:23.611+00:00"
+    },
+    {
+        "Url": "www.twitter.com",
+        "Title": "Twitter. Es lo que est\u00e1 pasando",
+        "Tags": [
+            "redes_sociales"
+        ],
+        "CreatedAt": "2022-01-09T20:21:59.811+00:00"
+    },
+    {
+        "Url": "www.instagram.com",
+        "Title": "Instagram",
+        "Tags": [
+            "redes_sociales"
+        ],
+        "CreatedAt": "2022-01-09T20:22:34.781+00:00"
+    },
+    {
+        "Url": "www.web.whatsapp.com",
+        "Title": "WhatsApp Web",
+        "Tags": [
+            "redes_sociales"
+        ],
+        "CreatedAt": "2022-01-09T20:22:54.586+00:00"
+    },
+    {
+        "Url": "www.pinterest.com",
+        "Title": "Pinterest",
+        "Tags": [
+            "redes_sociales"
+        ],
+        "CreatedAt": "2022-01-09T20:23:57.054+00:00"
+    },
+    {
+        "Url": "www.youtube.com",
+        "Title": "",
+        "Tags": [
+            "video",
+            "entretenimiento",
+            "redes_sociales",
+            "m\u00fasica"
+        ],
+        "CreatedAt": "2022-01-09T20:24:44.616+00:00"
+    },
+    {
+        "Url": "www.spotify.com",
+        "Title": "",
+        "Tags": [
+            "m\u00fasica",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T20:26:26.628+00:00"
+    },
+    {
+        "Url": "www.upc.edu.pe",
+        "Title": "",
+        "Tags": [
+            "acad\u00e9mico",
+            "educaci\u00f3n"
+        ],
+        "CreatedAt": "2022-01-09T20:28:42.727+00:00"
+    },
+    {
+        "Url": "www.netflix.com",
+        "Title": "",
+        "Tags": [
+            "video",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T20:30:32.517+00:00"
+    },
+    {
+        "Url": "www.hbomax.com",
+        "Title": "",
+        "Tags": [
+            "video",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T20:30:40.317+00:00"
+    },
+    {
+        "Url": "www.primevideo.com",
+        "Title": "",
+        "Tags": [
+            "video",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T20:32:14.167+00:00"
+    },
+    {
+        "Url": "www.hulu.com",
+        "Title": "Hulu: Stream TV and Movies Live",
+        "Tags": [
+            "video",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T20:32:54.253+00:00"
+    },
+    {
+        "Url": "www.disneyplus.com/es-pe",
+        "Title": "Lo mejor de Disney, Pixar, Star Wars y National Geographic",
+        "Tags": [
+            "video",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T20:34:11.236+00:00"
+    },
+    {
+        "Url": "www.twitch.tv",
+        "Title": "",
+        "Tags": [
+            "video",
+            "entretenimiento",
+            "redes_sociales"
+        ],
+        "CreatedAt": "2022-01-09T20:35:20.552+00:00"
+    },
+    {
+        "Url": "www.pamamountplus.com",
+        "Title": "Paramount+",
+        "Tags": [
+            "video",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T20:36:15.698+00:00"
+    },
+    {
+        "Url": "www.peacocktv.com",
+        "Title": "Peacock",
+        "Tags": [
+            "video",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T20:37:32.437+00:00"
+    },
+    {
+        "Url": "www.plus.espn.com",
+        "Title": "",
+        "Tags": [
+            "video",
+            "entretenimiento",
+            "deportes"
+        ],
+        "CreatedAt": "2022-01-09T20:38:34.999+00:00"
+    },
+    {
+        "Url": "www.tv.apple.com",
+        "Title": "AppleTv+",
+        "Tags": [
+            "video",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T20:39:59.149+00:00"
+    },
+    {
+        "Url": "www.linkedin.com",
+        "Title": "",
+        "Tags": [
+            "empresas",
+            "redes_sociales"
+        ],
+        "CreatedAt": "2022-01-09T20:45:44.729+00:00"
+    },
+    {
+        "Url": "https://store.steampowered.com/",
+        "Title": "Bienvenidos a Steam",
+        "Tags": [
+            "entretenimiento",
+            "juegos"
+        ],
+        "CreatedAt": "2022-01-09T21:09:22.870+00:00"
+    },
+    {
+        "Url": "https://www.epicgames.com/store/en-US/",
+        "Title": "Epic Games Store | Download and Play PC Games",
+        "Tags": [
+            "entretenimiento",
+            "juegos"
+        ],
+        "CreatedAt": "2022-01-09T21:09:56.900+00:00"
+    },
+    {
+        "Url": "https://latam.ign.com/",
+        "Title": "IGN Latinoam\u00e9rica",
+        "Tags": [
+            "entretenimiento",
+            "juegos",
+            "video"
+        ],
+        "CreatedAt": "2022-01-09T21:15:58.008+00:00"
+    },
+    {
+        "Url": "https://www.gamespot.com/",
+        "Title": "Video Game Reviews and News - Gamespot",
+        "Tags": [
+            "entretenimiento",
+            "juegos",
+            "video"
+        ],
+        "CreatedAt": "2022-01-09T21:17:06.118+00:00"
+    },
+    {
+        "Url": "https://www.minijuegos.com/",
+        "Title": "Juegos Online Gratis - Minijuegos",
+        "Tags": [
+            "entretenimiento",
+            "juegos"
+        ],
+        "CreatedAt": "2022-01-09T21:19:35.423+00:00"
+    },
+    {
+        "Url": "https://www.miniclip.com/games/es/#",
+        "Title": "Juegos de Miniclip.com",
+        "Tags": [
+            "juegos",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T21:20:30.266+00:00"
+    },
+    {
+        "Url": "https://play.runescape.com/",
+        "Title": "The World of Runescape",
+        "Tags": [
+            "juegos",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T21:21:59.654+00:00"
+    },
+    {
+        "Url": "www.armorgames.com",
+        "Title": "Play Free Games Online at Armor Games",
+        "Tags": [
+            "juegos",
+            "entretenimiento"
+        ],
+        "CreatedAt": "2022-01-09T21:23:05.363+00:00"
+    },
+    {
+        "Url": "www.naughtydog.com",
+        "Title": "Naughty Dog",
+        "Tags": [
+            "empresas",
+            "entretenimiento",
+            "juegos"
+        ],
+        "CreatedAt": "2022-01-09T21:25:18.917+00:00"
+    },
+    {
+        "Url": "www.guerrilla-games.com",
+        "Title": "Guerrilla",
+        "Tags": [
+            "entretenimiento",
+            "juegos",
+            "empresas"
+        ],
+        "CreatedAt": "2022-01-09T21:26:22.179+00:00"
+    },
+    {
+        "Url": "www.rockstargames.com",
+        "Title": "Rockstar Games",
+        "Tags": [
+            "entretenimiento",
+            "juegos",
+            "empresas"
+        ],
+        "CreatedAt": "2022-01-09T21:27:03.074+00:00"
+    },
+    {
+        "Url": "www.newblood.games",
+        "Title": "New Blood Interactive",
+        "Tags": [
+            "entretenimiento",
+            "juegos",
+            "empresas"
+        ],
+        "CreatedAt": "2022-01-09T21:34:00.906+00:00"
+    },
+    {
+        "Url": "www.newgrounds.com",
+        "Title": "Newgrounds.com - Everything, by Everyone",
+        "Tags": [
+            "entretenimiento",
+            "juegos",
+            "m\u00fasica",
+            "video"
+        ],
+        "CreatedAt": "2022-01-09T21:39:49.954+00:00"
+    },
+    {
+        "Url": "www.celestegame.com",
+        "Title": "Celeste",
+        "Tags": [
+            "entretenimiento",
+            "juegos"
+        ],
+        "CreatedAt": "2022-01-09T21:41:25.577+00:00"
+    }
+]
