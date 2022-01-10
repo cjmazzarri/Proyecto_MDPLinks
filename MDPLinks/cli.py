@@ -8,11 +8,21 @@ import typer
 from pathlib import Path
 from datetime import date, timezone, datetime
 from babel.dates import format_datetime, get_timezone
+import math
+import msvcrt as m
 
-from mdplinks import __app_name__, __version__, database, mdplinks, ERRORS
+from mdplinks import database, ERRORS, mdplinks
+from mdplinks import __app_name__, __version__
 app = typer.Typer()
 DB_PATH = "mdplinks/db/"
 tz = get_timezone()
+
+def wait():
+    key = m.getch()
+    if key == b'q':
+        typer.secho('Salida', fg=typer.colors.YELLOW)
+        raise typer.Exit()
+    return
 
 def _version_callback(value: bool) -> None:
     if value:
@@ -65,7 +75,7 @@ def get_controller() -> mdplinks.LinkController:
 
 @app.command()
 def add_link(
-    title: str = typer.Option(""),
+    title: str = typer.Option("", help="Un título para el enlace, si desea agregarlo. Escriba entre comillas dobles \"\" para incluir espacios."),
     url: str = typer.Argument(..., help="El enlace de la página web que se desea agregar"),
     tags: str = typer.Option(..., help="Las etiquetas separadas por comas"),
 ) -> None:
@@ -91,9 +101,9 @@ def get_all_links() -> None:
     if len(link_list) == 0:
         typer.secho("No se han agregado registros a la base de datos aún.", fg=typer.colors.RED)
         raise typer.Exit()
-    typer.secho("\nEnlaces registrados ("+str(len(link_list))+"):\n", fg=typer.colors.BRIGHT_GREEN)
+    typer.secho("\nMostrando los enlaces registrados en total ("+str(len(link_list))+"):\n", fg=typer.colors.BRIGHT_GREEN)
 
-    for link in link_list:
+    for link in link_list:              #se podría mover esto a una función mostrar para mejor orden
         taglist = ",".join(link['Tags'])
         rawdate = link['CreatedAt']
         datestr = datetime.fromisoformat(rawdate)
@@ -113,7 +123,7 @@ def edit_link(
     title: str = typer.Option("", help="El nuevo título para el link"),
     tags: str = typer.Option("", help="Las nuevas etiquetas para el link")
 ) -> None:
-    """Editar las etiquetas/título de un link"""
+    '''Editar las etiquetas/título de un link'''
     controller = get_controller()
     link, error = controller.update_link(url, tags, title)
     if error:
@@ -121,4 +131,47 @@ def edit_link(
         raise typer.Exit(1)
     else:
         typer.secho(f'Se modificaron los datos del enlace de url {url}.', fg=typer.colors.BLUE)
+    
+@app.command(name="tag-search")
+def tag_search(
+    tag: str = typer.Option("",help="La etiqueta que será usada para consultar links."),
+    per_page: int = typer.Option(25, help="Cantidad de enlaces a mostrar por página.")
 
+) -> None:
+    '''Buscar links por etiqueta'''
+    controller = get_controller()
+    if per_page < 1:
+        typer.secho('Error: ¡El modificador --per-page deber ser mayor o igual que 1!', fg=typer.colors.RED)
+        raise typer.Exit(1)
+    if tag=="":
+        get_all_links()
+        raise typer.Exit()
+    link_list = controller.search_by_tag(tag)
+    pages = math.ceil(len(link_list)/per_page)
+    page_count = 1
+    typer.secho(f"Se encontraron {len(link_list)} enlaces encontrados con la etiqueta {tag}.",fg=typer.colors.GREEN)
+    typer.secho(f"Mostrando {per_page} enlaces por página.", fg=typer.colors.BLUE)
+    typer.secho(f"Página {page_count} de {pages}" ,fg=typer.colors.BRIGHT_YELLOW)
+    link_count = 0
+    for link in link_list:        
+        taglist = ",".join(link['Tags'])
+        rawdate = link['CreatedAt']
+        datestr = datetime.fromisoformat(rawdate)
+        datefmt = format_datetime(datestr, "EEEE, dd 'de' MMMM 'de' YYYY HH:mm:ss:SS ZZ", tzinfo=tz, locale='es') #tzinfo='America/Bogota'
+        if link_count == per_page:            
+            typer.secho('Presione cualquier tecla para pasar a la siguiente página. Presione la tecla Q para salir.', fg=typer.colors.BRIGHT_BLUE)
+            wait()
+            page_count+=1
+            typer.secho(f"Página {page_count} de {pages}" ,fg=typer.colors.BRIGHT_YELLOW)
+            link_count = 0            
+
+        typer.secho(
+            f"* Título: {link['Title']}" if link['Title'] != "" else f"* [Sin título]",
+            fg=typer.colors.YELLOW)
+        typer.secho(f"  URL: {link['Url']}"
+                    f"  Etiquetas: {taglist}",
+                    fg=typer.colors.YELLOW)
+        typer.secho(f"  Fecha y hora de creación: {datefmt}\n", fg=typer.colors.YELLOW)
+        link_count+=1
+    typer.secho('Fin de los resultados', fg=typer.colors.YELLOW)
+    

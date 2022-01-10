@@ -64,4 +64,11 @@ class LinkController:
                 write = self._db_handler.write_links(read.links)
                 return Link(link, write.error)            
         return Link(link, ID_ERROR)
-        
+    
+    def search_by_tag(self, given_tag: str) -> List[Dict[str, Any]]:
+        read = self._db_handler.read_links()
+        results = []
+        for link in read.links:
+            if given_tag in link['Tags']:
+                results.append(link)
+        return results
