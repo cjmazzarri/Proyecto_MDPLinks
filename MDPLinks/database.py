@@ -25,8 +25,7 @@ class DatabaseHandler:
 
     def write_links(self, links: List[Dict[str, Any]]) -> DBResponse:
         try:
-            with open(self._db_path+"database.json", "w") as db:
-            #with open("mdplinks/db/database.json", "w") as db:
+            with open(self._db_path+"database.json", "w") as db:            
                 json.dump(links, db, indent=4)
             return DBResponse(links, SUCCESS)
         except OSError:  # Catch file IO problems
